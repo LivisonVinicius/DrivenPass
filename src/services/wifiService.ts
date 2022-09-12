@@ -1,5 +1,4 @@
 import * as wifiRepository from "../repositories/wifiRepository.js";
-import wifiSchema from "../schemas/wifiSchema.js";
 import { IWifiAll, IWifiType } from "../types/wifiType.js";
 import { cryptPassword, decryptPassword } from "../utils/cryptPassword.js";
 
