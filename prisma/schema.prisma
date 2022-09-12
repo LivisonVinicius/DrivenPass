@@ -54,7 +54,7 @@ enum CardType {
 
 model Cards {
   id             Int      @id @default(autoincrement())
-  title          String   @unique
+  title          String
   number         String
   nameCard       String
   codeSecurity   String

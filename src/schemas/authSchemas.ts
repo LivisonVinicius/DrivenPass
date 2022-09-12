@@ -26,3 +26,8 @@ export const registerSchema = joi.object({
       "password.noWhiteSpaces": "{#label} should not contain white spaces",
     }),
 });
+
+export const loginSchema = joi.object({
+  email: joi.string().email().required(),
+  password: joi.string().required(),
+});

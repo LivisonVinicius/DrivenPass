@@ -15,3 +15,17 @@ export async function registerUser(user: IUserType) {
   await userRepository.insert(user);
   return;
 }
+
+export async function loginUser(user: IUserType) {
+  const existUser = await userRepository.findByEmail(user.email);
+  if (!existUser) {
+    throw { type: "Unauthorized", message: "Password or Email wrong" };
+  }
+  if (!bcrypt.compare(user.password, existUser.password)) {
+    throw { type: "Unauthorized", message: "Password or Email wrong" };
+  }
+  const token = jwt.sign({ id: existUser.id }, process.env.SECRET_TOKEN!, {
+    expiresIn: "1d",
+  });
+  return token;
+}

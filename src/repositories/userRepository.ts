@@ -1,5 +1,5 @@
-import { client } from "../database";
-import { IUserType } from "../types/userType";
+import { client } from "../database.js";
+import { IUserType } from "../types/userType.js";
 
 export async function insert(data: IUserType) {
   await client.users.create({ data });
