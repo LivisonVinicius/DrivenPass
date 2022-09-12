@@ -7,6 +7,9 @@ export async function create(credential: ICredentialType, userId: number) {
     credential.title,
     userId
   );
+  if (!existCredential) {
+    throw { type: "Conflict", message: "Credential already exists" };
+  }
   credential.password = cryptPassword(credential.password);
 
   await credentialRepository.insert({ ...credential, usersId: userId });

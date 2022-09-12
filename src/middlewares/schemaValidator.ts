@@ -10,7 +10,8 @@ export default function schemaValidator(schema: SchemasType) {
       abortEarly: false,
     });
     if (error) {
-      throw { type: "Unprocessable Entity", message: "Invalid body" };
+      const errorMessage = error.details.map((detail) => detail.message);
+      throw { type: "Unprocessable Entity", message: errorMessage };
     }
     return next();
   };
