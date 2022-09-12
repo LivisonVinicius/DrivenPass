@@ -32,7 +32,11 @@ export async function get(userId: number, id: number) {
       return {
         id: elem.id,
         title: elem.title,
+        number: elem.number,
         nameCard: elem.nameCard,
+        isVirtual: elem.isVirtual,
+        expirationDate: elem.expirationDate,
+        type: elem.type,
         codeSecurity: decryptPassword(elem.codeSecurity),
         password: decryptPassword(elem.password),
       };
