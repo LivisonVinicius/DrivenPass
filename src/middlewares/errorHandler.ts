@@ -31,14 +31,13 @@ function errorTypes(error: Error) {
   return { status: 500, message: "Internal server error" };
 }
 
-export default function errorHandler(
+export default async function errorHandler(
   error: Error,
   req: Request,
   res: Response,
   next: NextFunction
 ) {
   console.log(error);
-  console.log("tchau");
   const errorType = errorTypes(error);
   return res.status(errorType.status).send(errorType.message);
 }

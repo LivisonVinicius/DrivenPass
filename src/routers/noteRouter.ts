@@ -15,7 +15,9 @@ noteRouter.post(
   schemaValidator("noteSchema"),
   createNote
 );
-noteRouter.get("/note", validateToken, getNote);
+
+noteRouter.get("/note/:id?", validateToken, getNote);
 
 noteRouter.delete("/note/:id", validateToken, deleteNote);
+
 export default noteRouter;

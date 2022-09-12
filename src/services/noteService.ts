@@ -9,11 +9,20 @@ export async function create(notes: INoteType, id: number) {
   await noteRepository.insert({ ...notes, usersId: id });
   return;
 }
-export async function get(userId: number) {
-  const note = await noteRepository.getByUserId(userId);
-  if (!note) {
-    throw { type: "Not Found", message: "Not Found" };
+export async function get(userId: number, id: number) {
+  let note;
+  if (id) {
+    note = await noteRepository.getById(id);
+    if (!note || note.usersId !== userId) {
+      throw { type: "Not Found", message: "Not Found" };
+    }
+  } else {
+    note = await noteRepository.getByUserId(userId);
+    if (!note) {
+      throw { type: "Not Found", message: "Not Found" };
+    }
   }
+
   return note;
 }
 
@@ -25,5 +34,6 @@ export async function deleteNote(id: number) {
   if (!note!) {
     throw { type: "Not Found", message: "Not Found" };
   }
-  await note;
+  await noteRepository.deleteById(id);
+  return;
 }

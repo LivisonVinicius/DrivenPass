@@ -1,8 +1,9 @@
 import { client } from "../database.js";
 import { INoteCreate } from "../types/noteType.js";
 
-export async function insert(data: INoteCreate) {
-  await client.notes.create({ data });
+export async function insert(note: INoteCreate) {
+  await client.notes.create({ data: note });
+  return;
 }
 
 export async function findOneUser(title: string, usersId: number) {
@@ -24,4 +25,5 @@ export async function getById(id: number) {
 
 export async function deleteById(id: number) {
   await client.notes.delete({ where: { id } });
+  return;
 }

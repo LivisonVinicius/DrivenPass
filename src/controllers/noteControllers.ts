@@ -10,8 +10,9 @@ export async function createNote(req: Request, res: Response) {
 }
 
 export async function getNote(req: Request, res: Response) {
+  const id = Number(req.params.id);
   const user = res.locals.user;
-  const note = await noteService.get(user.id);
+  const note = await noteService.get(user.id,id);
   return res.status(200).send(note);
 }
 
