@@ -9,11 +9,9 @@ export default function schemaValidator(schema: SchemasType) {
     const { error } = schemas[schema].validate(req.body, {
       abortEarly: false,
     });
-
     if (error) {
       throw { type: "Unprocessable Entity", message: "Invalid body" };
     }
-
     return next();
   };
 }

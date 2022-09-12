@@ -9,7 +9,8 @@ dotenv.config();
 export async function registerUser(user: IUserType) {
   const existUser = await userRepository.findByEmail(user.email);
   if (existUser) {
-    throw { type: "Conflict", message: "Email already in use" };
+    // throw { type: "Conflict", message: "Email already in use" };
+    throw { type: "Unprocessable Entity", message: "Invalid body" };
   }
   user.password = bcrypt.hashSync(user.password, 10);
   await userRepository.insert(user);
