@@ -16,4 +16,4 @@ Importante notar que o projeto consiste apenas em uma API. A interface não faz 
 Criptografia com Cryptr:
 
 O projeto utiliza a biblioteca Cryptr para realizar a criptografia das informações, proporcionando uma camada adicional de segurança.
-Fique à vontade para explorar, contribuir e personalizar este Gerenciador de Senhas. Lembre-se de conferir as orientações de contribuição no arquivo CONTRIBUTING.md. Proteja suas credenciais com confiança e eficiência!
+Fique à vontade para explorar, contribuir e personalizar este Gerenciador de Senhas.
